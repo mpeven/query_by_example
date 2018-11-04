@@ -72,11 +72,11 @@ for idx, user in enumerate(df["user"].unique()):
 ####################################################################################################
 ####################################################################################################
 ### Extract video frames
-# os.mkdir("{}/video_frames".format(JIGSAWS))
-# for vid_path in tqdm(sorted(glob.glob("{}/*/video/*".format(JIGSAWS))), desc="Extracting rgb frames", ncols=100):
-#     vid_id = os.path.basename(vid_path).replace(".avi", "")
-#     os.mkdir("{}/video_frames/{}".format(JIGSAWS, vid_id))
-#     cmd = "ffmpeg -hide_banner -loglevel panic -i {} {}/video_frames/{}/%05d.png".format(vid_path, JIGSAWS, vid_id)
-#     subprocess.call(cmd, shell=True)
+os.mkdir("{}/video_frames".format(JIGSAWS))
+for vid_path in tqdm(sorted(glob.glob("{}/*/video/*".format(JIGSAWS))), desc="Extracting rgb frames", ncols=100):
+    vid_id = os.path.basename(vid_path).replace(".avi", "")
+    os.mkdir("{}/video_frames/{}".format(JIGSAWS, vid_id))
+    cmd = "ffmpeg -hide_banner -loglevel panic -i {} {}/video_frames/{}/%05d.png".format(vid_path, JIGSAWS, vid_id)
+    subprocess.call(cmd, shell=True)
 ####################################################################################################
 ####################################################################################################
